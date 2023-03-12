@@ -29,4 +29,9 @@ export const isAuth = () => {
     return auth === 'true';
 }
 
-export const AUTH_COOKIE = "auth";
+export const AUTH_COOKIE = "zhang_ship_auth";
+export const PATH = {
+    HOME: "/zhang_ship/",
+    MANAGE: "/zhang_ship/manage",
+    AUTHEN: "/zhang_ship/authenticate",
+};

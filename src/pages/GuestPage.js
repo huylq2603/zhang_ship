@@ -1,9 +1,9 @@
-import { isAuth } from "../components/common";
+import { isAuth, PATH } from "../components/common";
 import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
 import OrderList from "../components/OrderList";
-import { firestore } from "../libs/firebase";
-import { setDoc, collection, query, where, getDoc, getDocs, deleteDoc, updateDoc, doc } from '@firebase/firestore';
+import { firestore, ORDERS } from "../libs/firebase";
+import { collection, query, where, getDocs } from '@firebase/firestore';
 
 const GuestPage = () => {
 
@@ -13,7 +13,7 @@ const GuestPage = () => {
     const navigate = useNavigate();
 
     const searchByPhone = async () => {
-        const q = query(collection(firestore, "orders"), where('buyerPhone', '==', phone));
+        const q = query(collection(firestore, ORDERS), where('buyerPhone', '==', phone));
         const querySnapshot = await getDocs(q);
         const orders = querySnapshot.docs.map((doc) => doc.data());
         setOrders(orders);
@@ -23,12 +23,12 @@ const GuestPage = () => {
         <div className="container">
             <h1>Guest Page &nbsp;
                 {!isAuth() &&
-                    <button className="btn waves-effect waves-light" type="button" onClick={() => { navigate("/authenticate") }}>
+                    <button className="btn waves-effect waves-light" type="button" onClick={() => { navigate(PATH.AUTHEN) }}>
                         Login
                     </button>
                 }
                 {isAuth() &&
-                    <button className="btn waves-effect waves-light" type="button" onClick={() => { navigate("/manage") }}>
+                    <button className="btn waves-effect waves-light" type="button" onClick={() => { navigate(PATH.MANAGE) }}>
                         To Manage Page
                     </button>
                 }

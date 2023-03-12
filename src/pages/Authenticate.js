@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { setCookie, AUTH_COOKIE } from '../components/common';
+import { setCookie, AUTH_COOKIE, PATH } from '../components/common';
 import { useNavigate } from 'react-router-dom';
 import { isAuth } from '../components/common';
 import bcrypt from 'bcryptjs'
@@ -14,7 +14,7 @@ const Authenticate = () => {
 
     useEffect(() => {
         if (isAuth()) {
-            navigate('/manage');
+            navigate(PATH.MANAGE);
         }
     }, []);
 
@@ -26,13 +26,13 @@ const Authenticate = () => {
             return;
         }
         setCookie(AUTH_COOKIE, true, 24);
-        navigate('/manage');
+        navigate(PATH.MANAGE);
     }
 
     return (
         <div className='container'>
             <h1>Authenticate &nbsp;
-                <button className="btn waves-effect waves-light" type="button" onClick={() => { navigate("/") }}>
+                <button className="btn waves-effect waves-light" type="button" onClick={() => { navigate(PATH.HOME) }}>
                     Back
                 </button>
             </h1>

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
-import { setCookie, AUTH_COOKIE } from "./components/common";
-import { firestore } from './libs/firebase';
+import { Routes, Route } from "react-router-dom";
+import { PATH } from "./components/common";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 import Authenticate from "./pages/Authenticate";
@@ -24,9 +23,9 @@ function App() {
       {
         okToRender &&
         <Routes>
-          <Route path="/zhang_ship/" element={<GuestPage />} />
-          <Route path="/zhang_ship/authenticate" element={<Authenticate />} />
-          <Route path="/zhang_ship/manage" element={
+          <Route path={PATH.HOME} element={<GuestPage />} />
+          <Route path={PATH.AUTHEN} element={<Authenticate />} />
+          <Route path={PATH.MANAGE} element={
             <ProtectedRoute>
               <ManagePage />
             </ProtectedRoute>

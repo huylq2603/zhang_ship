@@ -1,9 +1,9 @@
 import { Navigate } from "react-router-dom";
-import { isAuth } from "./common";
+import { isAuth, PATH } from "./common";
 
 const ProtectedRoute = ({ children }) => {
 
-    return isAuth() ? children : <Navigate to="/" replace />;
+    return isAuth() ? children : <Navigate to={PATH.HOME} replace />;
 
 }
 

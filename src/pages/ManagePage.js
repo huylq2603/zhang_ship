@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { isAuth } from "../components/common";
-import { firestore } from '../libs/firebase';
-import { setDoc, collection, query, where, getDoc, getDocs, deleteDoc, updateDoc, doc } from '@firebase/firestore';
+import { firestore, ORDERS } from '../libs/firebase';
+import { setDoc, collection, query, getDocs, deleteDoc, updateDoc, doc } from '@firebase/firestore';
 
 import OrderInput from "../components/OrderInput";
 import OrderList from "../components/OrderList";
+import { PATH } from "../components/common";
 
 const ManagePage = () => {
 
@@ -19,7 +19,7 @@ const ManagePage = () => {
     }, []);
 
     const getAllOrders = async () => {
-        const q = query(collection(firestore, "orders"));
+        const q = query(collection(firestore, ORDERS));
         const querySnapshot = await getDocs(q);
         const orders = querySnapshot.docs.map((doc) => doc.data());
         setOrders(orders);
@@ -29,18 +29,18 @@ const ManagePage = () => {
         if (window.confirm("Delete this?")) {
             let newOrders = [...orders].filter(el => el.id != id);
             setOrders(newOrders);
-            deleteDoc(doc(firestore, "orders", id))
+            deleteDoc(doc(firestore, ORDERS, id))
         }
     }
 
     const addOrder = async (order) => {
-        await setDoc(doc(firestore, "orders", order.id), order);
+        await setDoc(doc(firestore, ORDERS, order.id), order);
 
         getAllOrders();
     }
 
     const updateOrder = async (order) => {
-        await updateDoc(doc(firestore, "orders", order.id), order);
+        await updateDoc(doc(firestore, ORDERS, order.id), order);
 
         getAllOrders();
     }
@@ -48,7 +48,7 @@ const ManagePage = () => {
     return (
         <div className="container">
             <h1 style={{ textAlign: "center" }}>Orders &nbsp;
-                <button className="btn waves-effect waves-light" type="button" onClick={() => { navigate("/") }}>
+                <button className="btn waves-effect waves-light" type="button" onClick={() => { navigate(PATH.HOME) }}>
                     Back
                 </button>
             </h1>
