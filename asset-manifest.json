@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/zhang_ship/static/css/main.e6c13ad2.css",
+    "main.js": "/zhang_ship/static/js/main.f8a5a8b3.js",
+    "index.html": "/zhang_ship/index.html",
+    "main.e6c13ad2.css.map": "/zhang_ship/static/css/main.e6c13ad2.css.map",
+    "main.f8a5a8b3.js.map": "/zhang_ship/static/js/main.f8a5a8b3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.f8a5a8b3.js"
+  ]
+}
