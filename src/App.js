@@ -24,9 +24,9 @@ function App() {
       {
         okToRender &&
         <Routes>
-          <Route path="/" element={<GuestPage />} />
-          <Route path="/authenticate" element={<Authenticate />} />
-          <Route path="/manage" element={
+          <Route path="/zhang_ship/" element={<GuestPage />} />
+          <Route path="/zhang_ship/authenticate" element={<Authenticate />} />
+          <Route path="/zhang_ship/manage" element={
             <ProtectedRoute>
               <ManagePage />
             </ProtectedRoute>
